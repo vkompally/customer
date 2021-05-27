@@ -1,5 +1,8 @@
 package com.rs.customer.model;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
+
 public class Customer {
 
     private int customerId;

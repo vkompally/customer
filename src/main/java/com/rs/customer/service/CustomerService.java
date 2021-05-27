@@ -1,18 +1,22 @@
 package com.rs.customer.service;
 
 import com.rs.customer.model.Customer;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
 
+@Component
 public class CustomerService {
     private int customerIdCount = 1;
     private List<Customer> customerList = new CopyOnWriteArrayList<>();
 
+
      public Customer addCustomer(Customer customer){
          customer.setCustomerId(customerIdCount);
          customerList.add(customer);
-         customerList.add(customer);
+//         customerList.add(customer);
          customerIdCount++;
          return customer;
      }
@@ -21,7 +25,7 @@ public class CustomerService {
          return customerList;
      }
 
-     public  Customer getCustomer(int customerId){
+     public Customer getCustomer(int customerId){
          return customerList
                  .stream()
                  .filter(c->c.getCustomerId() == customerId)
@@ -29,7 +33,7 @@ public class CustomerService {
                  .get();
      }
 
-     Customer updateCustomer(int customerId, Customer customer){
+     public Customer updateCustomer(int customerId, Customer customer){
          customerList
                  .stream()
                  .forEach(c->{
